@@ -1,0 +1,23 @@
+@import "../../less/_variables.less";
+
+.post-deletebtn {
+    background-color: rgba(@primary-dark, 0.2) !important;
+    align-self: center;
+    margin-left: 0.2rem;
+    width: 36px;
+    height: 36px;
+    padding: 5px 0;
+    margin-right: auto;
+
+    .MuiSvgIcon-root {
+        transition: inherit;
+    }
+
+    &:hover {
+        background-color: @primary-dark;
+
+        .MuiSvgIcon-root {
+            color: white;
+        }
+    }
+}

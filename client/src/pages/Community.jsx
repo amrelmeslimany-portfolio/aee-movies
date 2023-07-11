@@ -5,6 +5,7 @@ import { CommunityContext } from "../context/community/community-context";
 import useFetchPosts from "../hooks/useFetchPosts";
 import { FilterPosts } from "../components/Community/FilterPosts";
 import { CLEAR_POST } from "../context/community/community-actions";
+import useDocTitle from "../hooks/useDocTitle";
 
 function Community() {
   const { posts, dispatch } = useContext(CommunityContext);
@@ -18,6 +19,8 @@ function Community() {
     setPage(1);
     dispatch(CLEAR_POST());
   };
+
+  useDocTitle("المجتمع");
 
   return (
     <div className="community-page">

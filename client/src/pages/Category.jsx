@@ -10,6 +10,7 @@ import Error from "../components/UI/Error";
 import Loading from "../components/UI/Loading";
 import "./Category.less";
 import { clearCategoriedMovies } from "../context/movies/moviesActions";
+import useDocTitle from "../hooks/useDocTitle";
 
 const titleWords = [
   {

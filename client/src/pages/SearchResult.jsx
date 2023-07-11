@@ -9,6 +9,7 @@ import { RadioButtonChecked, RadioButtonUnchecked } from "@material-ui/icons";
 import Loading from "../components/UI/Loading";
 import "./SearchResult.less";
 import GridList from "../components/UI/GridList";
+import useDocTitle from "../hooks/useDocTitle";
 
 function SearchResult() {
   const { dispatch, filteredItems, filterError, isFiltering } =
@@ -17,6 +18,8 @@ function SearchResult() {
   const [queries] = useSearchParams();
   const titleQuery = queries.get("q");
   const countryQuery = queries.get("countries");
+
+  useDocTitle("نتائج البحث");
 
   useEffect(() => {
     getFilterdMovies(titleQuery, countryQuery, dispatch);

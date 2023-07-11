@@ -7,6 +7,7 @@ import { FavouriteContext } from "../../context/favourite/favourite-context";
 import { ADD_VISITEDBEFORE_ITEM } from "../../context/favourite/favouriteActions";
 import errorImg from "../../assets/imgs/movie-error.png";
 import "./DetailsHeader.less";
+import useDocTitle from "../../hooks/useDocTitle";
 
 function DetailsHeader({ data }) {
   const {
@@ -19,6 +20,8 @@ function DetailsHeader({ data }) {
   } = data;
   const { dispatch } = useContext(FavouriteContext);
   const [isImageError, setIsImageError] = useState(false);
+
+  useDocTitle(movieTitle);
 
   useEffect(() => {
     dispatch(ADD_VISITEDBEFORE_ITEM(movieID));

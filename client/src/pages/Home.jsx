@@ -7,12 +7,15 @@ import { getMoviesGenre } from "../context/movies/movies-cruds";
 import { useContext } from "react";
 import { MoviesContext } from "../context/movies/movies-context";
 import Error from "../components/UI/Error";
+import useDocTitle from "../hooks/useDocTitle";
 
 function Home(props) {
   const { dispatch, items, isFetching, error } = useContext(MoviesContext);
   const [params] = useSearchParams();
   const navigate = useNavigate();
   const movieType = (params && params.get("type")) || "";
+
+  useDocTitle("الصفحة الرئيسية");
 
   useEffect(() => {
     if (params && params.get("type")) getMoviesGenre(movieType, dispatch);

@@ -60,11 +60,26 @@ function Body() {
         {/* Must Authentication */}
         <Route
           path="/bookmarked"
-          element={isLogin ? <ListSettings type="favourites" /> : guard}
+          element={
+            isLogin ? (
+              <ListSettings type="favourites" docTitle="المفضلة" />
+            ) : (
+              guard
+            )
+          }
         />
         <Route
           path="/recently"
-          element={isLogin ? <ListSettings type="visitedBefore" /> : guard}
+          element={
+            isLogin ? (
+              <ListSettings
+                type="visitedBefore"
+                docTitle="الافلام التي زورتها"
+              />
+            ) : (
+              guard
+            )
+          }
         />
       </Routes>
     </Layout.Content>

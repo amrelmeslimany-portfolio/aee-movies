@@ -11,6 +11,7 @@ import { useContext } from "react";
 import { FavouriteContext } from "../context/favourite/favourite-context";
 import Delete from "@material-ui/icons/Delete";
 import "./ListSettings.less";
+import useDocTitle from "../hooks/useDocTitle";
 
 const initialState = {
   items: [],
@@ -19,26 +20,28 @@ const initialState = {
   successMessage: "",
 };
 
-function ListSettings({ type: listType }) {
+function ListSettings({ type: listType, docTitle }) {
   const { visitedBefore, favourites, dispatch } = useContext(FavouriteContext);
   const [status, setStatus] = useState(initialState);
+  const isFavouritePage = listType === "favourites";
 
-  const pageTitle =
-    listType === "favourites" ? "قائمتك المفضلة" : "قائمة الافلام التي زورتها";
+  const pageTitle = isFavouritePage
+    ? "قائمتك المفضلة"
+    : "قائمة الافلام التي زورتها";
 
   const removeAllBTNHandler = () => {
     removeFavouritesAll(listType, setStatus, dispatch);
   };
 
+  useDocTitle(docTitle);
+
   useEffect(() => {
     if (favourites.length === 0 && visitedBefore.length === 0) {
-      const errorMessage =
-        listType === "favourites"
-          ? "ليس لديك افلام فى المفضلة"
-          : "لم تقم بزيارة افلام";
       setStatus((prev) => ({
         ...prev,
-        error: errorMessage,
+        error: isFavouritePage
+          ? "ليس لديك افلام فى المفضلة"
+          : "لم تقم بزيارة افلام",
         items: [],
       }));
     } else getList(listType, setStatus);

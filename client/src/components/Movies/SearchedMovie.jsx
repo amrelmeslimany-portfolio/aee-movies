@@ -4,6 +4,7 @@ import MovieActions from "./MovieActions";
 import movieErrorImg from "../../assets/imgs/movie-error.png";
 
 import "./SearchedMovie.less";
+
 function SearchedMovie({ data, removeble }) {
   const { movieTitle, movieCountry, movieThumbnail, movieRating, _id } = data;
   const [isImgError, setIsImgError] = useState(false);

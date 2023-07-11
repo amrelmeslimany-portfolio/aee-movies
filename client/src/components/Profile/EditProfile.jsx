@@ -5,6 +5,7 @@ import { AddAPhoto } from "@material-ui/icons";
 import { editProfileAPI } from "../../context/auth/auth-cruds";
 import { AuthContext } from "../../context/auth/auth-context";
 import "./EditProfile.less";
+import useDocTitle from "../../hooks/useDocTitle";
 
 const initialStatus = {
   isLoading: false,
@@ -39,6 +40,8 @@ function EditProfile({ user }) {
 
     editProfileAPI(formdata, setStatus, dispatch);
   };
+
+  useDocTitle("تعديل الحساب");
 
   useEffect(() => {
     if (status.success) {

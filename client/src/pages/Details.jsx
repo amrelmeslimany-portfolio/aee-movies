@@ -7,6 +7,7 @@ import { getDetailsItem } from "../context/movies/movies-cruds";
 import Loading from "../components/UI/Loading";
 
 import Error from "../components/UI/Error";
+import useDocTitle from "../hooks/useDocTitle";
 
 function Details() {
   const [{ data, error, isFetching }, setFetch] = useState({
@@ -15,6 +16,8 @@ function Details() {
     error: null,
   });
   const { id } = useParams();
+
+  useDocTitle("تفاصيل الفيلم");
 
   useEffect(() => {
     getDetailsItem(id, setFetch);

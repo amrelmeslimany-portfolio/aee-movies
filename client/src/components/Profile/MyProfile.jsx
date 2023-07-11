@@ -6,6 +6,7 @@ import useFetchPosts from "../../hooks/useFetchPosts";
 import { CommunityContext } from "../../context/community/community-context";
 import { FilterPosts } from "../Community/FilterPosts";
 import { CLEAR_USER_POSTS } from "../../context/community/community-actions";
+import useDocTitle from "../../hooks/useDocTitle";
 
 function MyProfile({ user }) {
   const { dispatch, userPosts } = useContext(CommunityContext);
@@ -20,6 +21,8 @@ function MyProfile({ user }) {
     setPage(1);
     dispatch(CLEAR_USER_POSTS());
   };
+
+  useDocTitle(`${name} | البروفايل`);
 
   return (
     <>

@@ -5,8 +5,18 @@
 
 .ant-layout {
     .menu__sider {
-        padding-top: @mt;
+
         min-height: 100vh;
+
+        .logo-wrap {
+            padding: 15px;
+            text-align: center;
+
+            img {
+                width: 90px;
+
+            }
+        }
 
         &:not(.ant-layout-sider-collapsed) {
             .slider-width();

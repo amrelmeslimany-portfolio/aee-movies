@@ -17,7 +17,7 @@ import {
   NoMeetingRoom,
   NoMeetingRoomOutlined,
 } from "@material-ui/icons";
-
+import LogoImg from "../../assets/imgs/logo.png";
 import { logoutAPI } from "../../context/auth/auth-cruds";
 import "./MenuSider.less";
 
@@ -126,6 +126,9 @@ export default function MenuSider({ collapsed, setCollapsed }) {
       onBreakpoint={(broken) => setCollapsed(broken ? true : false)}
       className="menu__sider"
     >
+      <div className="logo-wrap">
+        <img src={LogoImg} alt="aee logo" />
+      </div>
       <Typography.Title level={5} className="menu__title">
         الصفحات
       </Typography.Title>

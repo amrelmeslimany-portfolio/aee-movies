@@ -6,18 +6,23 @@ import {
   useSearchParams,
 } from "react-router-dom";
 import PropsType from "prop-types";
-import { Badge, Button, Layout, Space } from "antd";
+import { Badge, Button, Layout, Space, Grid } from "antd";
 import {
   ArrowBackIos,
   Close,
   Menu as MenuIcon,
   NotificationsOutlined,
+  Search,
 } from "@material-ui/icons";
 import "./Header.less";
 
+const { useBreakpoint } = Grid;
+
 const Links = ({ typeParam }) => {
+  const { md } = useBreakpoint();
+
   return (
-    <Space size={25}>
+    <Space className={`navbar-links ${!md ? "scrollable" : ""}`} size={25}>
       <Link
         to={{ pathname: "/", search: "type=movies" }}
         className={`color-header ${typeParam === "movies" ? "active" : ""}`}
@@ -40,7 +45,11 @@ const Links = ({ typeParam }) => {
   );
 };
 
-export default function Header({ onCollapseSider, collapsed }) {
+export default function Header({
+  onCollapseSider,
+  collapsed,
+  onOptionSliderChange,
+}) {
   const [isHome, setIsHome] = useState(true);
   const location = useLocation();
   const navigate = useNavigate();
@@ -75,6 +84,12 @@ export default function Header({ onCollapseSider, collapsed }) {
             type={"text"}
           />
         </Badge>
+
+        <Button
+          onClick={onOptionSliderChange}
+          icon={<Search className="color-header icon-header" />}
+          type={"text"}
+        />
       </Space>
       {isHome ? (
         <Links typeParam={typeParam} />

@@ -5,7 +5,7 @@ function GridList({ list, removeble }) {
   return (
     <Row gutter={10}>
       {list.map((item) => (
-        <Col key={item._id} span={12}>
+        <Col key={item._id} xl={12} xs={24}>
           <SearchedMovie data={item} removeble={removeble} />
         </Col>
       ))}

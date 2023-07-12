@@ -11,7 +11,6 @@ import axios from "axios";
 import { handleErrors } from "../../helpers";
 import { AuthContext } from "../../context/auth/auth-context";
 import { CLEAR_USER_POSTS } from "../../context/community/community-actions";
-import useDocTitle from "../../hooks/useDocTitle";
 
 const userInitStatus = {
   isLoading: false,

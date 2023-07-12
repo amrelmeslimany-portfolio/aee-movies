@@ -51,8 +51,8 @@ function DetailsHeader({ data }) {
         </div>
       </section>
       <div className="mediasinfo-wrap">
-        <Row gutter={20}>
-          <Col span={8}>
+        <Row gutter={[10, 15]}>
+          <Col lg={9}>
             <Image
               className="movie-img"
               preview={false}
@@ -62,7 +62,7 @@ function DetailsHeader({ data }) {
               onError={() => setIsImageError(true)}
             />
           </Col>
-          <Col span={16}>
+          <Col lg={15} xs={24}>
             {movieTrailor ? (
               <iframe
                 className="movietrailor"

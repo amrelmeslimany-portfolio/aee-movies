@@ -23,11 +23,9 @@ const initialState = {
 function ListSettings({ type: listType, docTitle }) {
   const { visitedBefore, favourites, dispatch } = useContext(FavouriteContext);
   const [status, setStatus] = useState(initialState);
-  const isFavouritePage = listType === "favourites";
 
-  const pageTitle = isFavouritePage
-    ? "قائمتك المفضلة"
-    : "قائمة الافلام التي زورتها";
+  const pageTitle =
+    listType === "favourites" ? "قائمتك المفضلة" : "قائمة الافلام التي زورتها";
 
   const removeAllBTNHandler = () => {
     removeFavouritesAll(listType, setStatus, dispatch);
@@ -39,9 +37,10 @@ function ListSettings({ type: listType, docTitle }) {
     if (favourites.length === 0 && visitedBefore.length === 0) {
       setStatus((prev) => ({
         ...prev,
-        error: isFavouritePage
-          ? "ليس لديك افلام فى المفضلة"
-          : "لم تقم بزيارة افلام",
+        error:
+          listType === "favourites"
+            ? "ليس لديك افلام فى المفضلة"
+            : "لم تقم بزيارة افلام",
         items: [],
       }));
     } else getList(listType, setStatus);

@@ -101,7 +101,7 @@ const settingLinks = (pathname, logoutHandler) => [
   },
 ];
 
-export default function MenuSider({ collapsed }) {
+export default function MenuSider({ collapsed, setCollapsed }) {
   const { isLogin, dispatch } = useContext(AuthContext);
   const location = useLocation();
   const [currentPage, setCurrentPage] = useState(location.pathname);
@@ -122,6 +122,8 @@ export default function MenuSider({ collapsed }) {
       trigger={null}
       collapsible
       collapsed={collapsed}
+      breakpoint="md"
+      onBreakpoint={(broken) => setCollapsed(broken ? true : false)}
       className="menu__sider"
     >
       <Typography.Title level={5} className="menu__title">

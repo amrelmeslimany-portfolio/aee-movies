@@ -11,7 +11,7 @@ import "./Filter.less";
 const Filter = forwardRef((props, ref) => {
   const { dispatch, filteredItems, filterError, isFiltering } =
     useContext(MoviesContext);
-  const { genres } = props;
+  const { genres, setSelectedGenres } = props;
   const joiendGenres = genres.join(",");
   const [searchInput, setSearchInput] = useState("");
   const [searchClasses, setSearchClasses] = useState("");
@@ -47,6 +47,8 @@ const Filter = forwardRef((props, ref) => {
       pathname: "/search",
       search,
     });
+
+    setSelectedGenres([]);
   };
 
   const noContent = filterError && (

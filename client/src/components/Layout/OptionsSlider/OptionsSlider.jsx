@@ -1,10 +1,8 @@
 import React, { useEffect, useRef, useState, useContext } from "react";
 import { Layout } from "antd";
-
 import UserProfile from "./UserProfile";
 import Filter from "./Filter/Filter";
 import TagsFilter from "./TagsFilter";
-
 import { AuthContext } from "../../../context/auth/auth-context";
 import OneMovieList from "./OneMovie/OneMovieList";
 import "./OptionsSlider.less";
@@ -20,9 +18,15 @@ function OptionsSlider(props) {
   }, [selectedGenres]);
 
   return (
-    <Layout.Sider className="optionsslider">
+    <Layout.Sider
+      className={`optionsslider ${!props.optionSlider ? "hide" : ""}`}
+    >
       <UserProfile user={user} isLogin={isLogin} />
-      <Filter genres={selectedGenres} ref={searchInput} />
+      <Filter
+        genres={selectedGenres}
+        setSelectedGenres={setSelectedGenres}
+        ref={searchInput}
+      />
       <TagsFilter
         setSelectedGenres={setSelectedGenres}
         selectedGenres={selectedGenres}

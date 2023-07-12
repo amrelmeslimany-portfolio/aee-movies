@@ -47,6 +47,7 @@ const columns = (isImageErorr, onImageError) => [
     dataIndex: "links",
     fixed: "right",
     width: 250,
+
     render: (link) => <DownloadButton link={link} />,
   },
 ];
@@ -114,6 +115,7 @@ function DetailsBody({ data }) {
         bordered={false}
         size="small"
         id="downloadwatch"
+        scroll={{ x: true }}
       />
     </div>
   );

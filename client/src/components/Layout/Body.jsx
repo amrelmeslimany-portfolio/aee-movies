@@ -17,6 +17,7 @@ import "./Body.less";
 import MyProfile from "../Profile/MyProfile";
 import UserProfile from "../Profile/UserProfile";
 import EditProfile from "../Profile/EditProfile";
+import { Page404 } from "../../pages/404";
 
 function Body() {
   const { isLogin, user } = useContext(AuthContext);
@@ -81,6 +82,8 @@ function Body() {
             )
           }
         />
+
+        <Route path="/*" element={<Page404 />} />
       </Routes>
     </Layout.Content>
   );

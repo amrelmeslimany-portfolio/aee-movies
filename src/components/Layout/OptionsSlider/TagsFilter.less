@@ -1,0 +1,68 @@
+@import "../../../less/_mixins.less";
+
+@slide-width: 150px;
+
+.options_tag_wrap {
+    padding: @padding;
+    padding-left: 0;
+
+    .options_header {
+        padding-left: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 0.8rem;
+
+        .options__title {
+            margin-bottom: 0;
+            .small-title();
+        }
+
+        .genresselected_number {
+            margin-left: 0;
+            font-size: 0.7rem;
+
+        }
+
+    }
+
+
+
+    .swiper-slide {
+
+        width: @slide-width ;
+
+        .genre_list {
+
+            .genre_item {
+                border-bottom: none;
+                padding: 0.2rem 0;
+
+                .genre_tag {
+                    width: @slide-width;
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 10px;
+                    align-items: center;
+                    font-size: 0.9rem;
+                    padding: 8px 16px;
+                    border-radius: 5rem;
+                    line-height: 16px;
+                    margin: 0;
+
+
+
+                    .MuiSvgIcon-root {
+                        width: 0.6em;
+                        height: 0.6em;
+                    }
+
+                    &:not(.ant-tag-checkable-checked) {
+                        background-color: @primary-dark;
+                    }
+                }
+            }
+        }
+    }
+
+}

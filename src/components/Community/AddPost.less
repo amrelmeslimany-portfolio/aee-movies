@@ -1,0 +1,48 @@
+@import "../../less/_variables.less";
+
+.addpost-wrap {
+    margin-bottom: 20px;
+
+    .addpost-button {
+        text-align: center;
+
+        .ant-btn-lg {
+            .MuiSvgIcon-root {
+                font-size: 29px;
+            }
+        }
+    }
+
+
+}
+
+
+.addpost-formself {
+    .upload-wrap {
+        margin-bottom: 20px;
+
+        .ant-upload-list-item {
+            border: none;
+            border-radius: 10px;
+            background: @primary-trasnparent;
+
+            &:hover {
+                background: darken(@primary-dark , 0.5);
+            }
+
+            .ant-upload-list-item-name {
+                padding-right: 10px;
+                padding-left: 10px;
+            }
+
+            .ant-upload-list-item-card-actions-btn {
+                background-color: rgba(white, 0.05);
+
+
+                .anticon.anticon-delete {
+                    padding-left: 0;
+                }
+            }
+        }
+    }
+}

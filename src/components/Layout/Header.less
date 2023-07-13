@@ -1,0 +1,86 @@
+@import "../../less/_mixins.less";
+
+.ant-layout {
+    .ant-layout-header {
+        line-height: normal;
+        padding: 0.7rem 1.4rem;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .ant-badge-dot {
+            box-shadow: none;
+        }
+
+        .color-header {
+            position: relative;
+
+            &:not(.icon-header) {
+                font-size: 0.95rem;
+            }
+
+            &.icon-header {
+                font-size: 1.5rem;
+            }
+
+            &:not(.active) {
+                color: @text-color;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: -19px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 0;
+                background-color: @primary-color;
+                height: 4px;
+                border-radius: 10px 10px 0 0;
+                transition: 0.1s ease-in-out;
+            }
+
+            &.active {
+                color: @text-hover;
+
+            }
+
+            &.active {
+                &::after {
+                    width: 75px;
+                }
+            }
+        }
+
+
+        .back-button {
+            border: none;
+
+            .MuiSvgIcon-root {
+                .flex-center();
+                width: 24px;
+                height: 24px;
+
+            }
+
+            &:hover {
+                background-color: @primary-color;
+
+                .MuiSvgIcon-root {
+                    color: white;
+                }
+            }
+        }
+
+
+        .navbar-links {
+
+
+            &.scrollable {
+                max-width: 100px;
+                overflow: auto hidden;
+            }
+        }
+    }
+}

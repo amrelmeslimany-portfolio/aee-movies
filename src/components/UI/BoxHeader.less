@@ -1,0 +1,33 @@
+@import "../../less/_variables.less";
+
+.wrap-section-briefmovies__header {
+
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+
+    .ant-typography {
+        color: @text-hover;
+        margin-bottom: 0;
+    }
+
+    .more-link {
+        align-items: center;
+        display: flex;
+        font-size: 0.9rem;
+        gap: 0.1rem;
+        color: @text-color;
+
+        .MuiSvgIcon-root {
+            width: 0.9em;
+            height: 0.9em;
+        }
+
+        &:hover {
+            color: @text-hover;
+        }
+    }
+
+}

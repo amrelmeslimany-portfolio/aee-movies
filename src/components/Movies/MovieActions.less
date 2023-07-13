@@ -1,0 +1,40 @@
+@import "../../less/_variables.less";
+
+
+.footer__actions {
+
+    align-items: center;
+    gap: 10px;
+
+    &:not(.flex) {
+        display: inline-flex;
+    }
+
+    &.flex {
+        display: flex;
+    }
+
+    &:not(.not-right) {
+        align-self: flex-end;
+        margin-right: auto;
+    }
+
+    &.space-between {
+        justify-content: space-between;
+    }
+
+    .watchnow-link {
+        border-radius: 5rem;
+        background-color: rgba(#ff4d4f, 0.5);
+        color: white;
+        font-weight: 800;
+        padding: 8px 16px;
+        transition: 0.1s;
+
+        &:hover {
+            background-color: rgb(#ff4d4f);
+        }
+    }
+
+
+}

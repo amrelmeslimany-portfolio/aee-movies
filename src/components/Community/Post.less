@@ -1,0 +1,127 @@
+@import "../../less/_variables.less";
+
+.post-item {
+    padding: 10px;
+    border-radius: 10px;
+    background: @primary-trasnparent;
+    max-width: 500px;
+    margin: 0 auto 20px;
+    box-shadow: 0 5px 20px rgba(@primary-dark, 0.2);
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    .post-header {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 10px;
+        background-color: rgba(white, 0.02);
+        padding: 5px;
+        border-radius: 10px;
+
+
+        .post-userprofile {
+            flex-shrink: 0;
+
+            .ant-avatar-image {
+                background: @primary-dark;
+
+
+            }
+        }
+
+        .post-userinfo {
+            >.wrap {
+                display: flex;
+                flex-direction: column;
+                align-self: center;
+                gap: 2px;
+
+                &.link:hover {
+                    h5 {
+                        color: rgba(white, 0.8);
+                        text-decoration: underline;
+                    }
+                }
+
+                h5 {
+                    margin-bottom: 0;
+
+                }
+
+                .post-timeago {
+                    color: gray;
+                    display: flex;
+                    gap: 2px;
+                    align-items: center;
+
+                    .MuiSvgIcon-root {
+                        font-size: 0.87rem;
+                    }
+
+                }
+            }
+
+
+
+
+
+
+
+
+        }
+
+
+    }
+
+    .post-body {
+
+        .post-text {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: white;
+        }
+
+        .post-cover {
+            border-radius: 10px;
+            object-position: center 25%;
+            object-fit: cover;
+
+        }
+    }
+
+    .post-footer {
+
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+
+        .post-love-button {
+            background-color: rgba(white, 0.05);
+
+            .MuiSvgIcon-root {
+                vertical-align: middle;
+
+                font-size: 1.2em;
+
+            }
+
+            &.active,
+            &:hover {
+                .MuiSvgIcon-root {
+                    color: white;
+                    transform: scale(1.05);
+                }
+            }
+        }
+
+        .post-loves {
+            font-size: 0.9rem;
+        }
+
+    }
+
+}

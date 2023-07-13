@@ -1,0 +1,38 @@
+@import "../less/_variables.less";
+
+.white-btn {
+    background-color: rgba(white, 0.2) !important;
+    border: none;
+
+
+
+    .MuiSvgIcon-root {
+        color: white;
+        transition: 0.2s;
+    }
+
+    &:hover {
+        background-color: white !important;
+
+        .MuiSvgIcon-root {
+            color: black;
+        }
+    }
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider-width {
+    flex: 0 0 250px !important;
+    max-width: 250px !important;
+}
+
+
+.small-title {
+    color: @gray;
+    font-size: 0.7rem;
+}

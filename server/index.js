@@ -21,7 +21,7 @@ app.use(cookieParser());
 app.use("/uploads", express.static(path.join(__dirname, "./uploads")));
 
 // Cors
-const allowlist = ["http://localhost:3000"];
+const allowlist = ["http://localhost:3000", "https://aee-movies.netlify.app"];
 const corsOptionsDelegate = (req, callback) => {
   let corsOptions;
 

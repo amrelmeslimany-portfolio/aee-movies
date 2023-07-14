@@ -5,7 +5,8 @@ import {
   REMOVE_POST,
   UPDATE_LKES,
 } from "./community-actions";
-import axios from "axios";
+
+import { axiosInstance } from "../../config";
 import { handleErrors } from "../../helpers";
 
 export const getPosts = async (
@@ -26,7 +27,7 @@ export const getPosts = async (
       page,
       sorting: filters,
     };
-    const { data } = await axios.get("/community", {
+    const { data } = await axiosInstance.get("/community", {
       params,
     });
 
@@ -53,7 +54,7 @@ export const addPost = async (post, setState, dispatch) => {
   }));
 
   try {
-    const { data } = await axios({
+    const { data } = await axiosInstance({
       method: "post",
       url: "/community/add",
       data: post,
@@ -76,7 +77,7 @@ export const likePost = async (id, setState, dispatch) => {
     error: null,
   }));
   try {
-    const { data } = await axios.put(`/community/like/${id}`);
+    const { data } = await axiosInstance.put(`/community/like/${id}`);
     dispatch(UPDATE_LKES({ id, likes: data.likes }));
   } catch (error) {
     console.log(error);
@@ -88,7 +89,7 @@ export const likePost = async (id, setState, dispatch) => {
 export const removePost = async (postid, setState, dispatch, message) => {
   setState(true);
   try {
-    const { data } = await axios.delete(`/community/delete/${postid}`);
+    const { data } = await axiosInstance.delete(`/community/delete/${postid}`);
     dispatch(REMOVE_POST(postid));
     message.success(data.success);
   } catch (error) {

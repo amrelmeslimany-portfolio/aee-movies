@@ -1,4 +1,4 @@
-import axios from "axios";
+import { axiosInstance } from "../../config";
 import { handleErrors } from "../../helpers";
 import {
   ADD_TO_FAV,
@@ -12,7 +12,7 @@ import {
 export const getList = async (listType, setState) => {
   setState((prev) => ({ ...prev, isLoading: true, error: null }));
   try {
-    const result = await axios.get("/lists", {
+    const result = await axiosInstance.get("/lists", {
       params: { listType },
     });
     setState((prev) => ({ ...prev, items: result.data }));
@@ -26,7 +26,7 @@ export const getList = async (listType, setState) => {
 export const addToFavourite = async (movieID, setState, dispatch) => {
   setState((prev) => ({ ...prev, isLoading: true, error: null }));
   try {
-    await axios.post("/lists/add", { movieID });
+    await axiosInstance.post("/lists/add", { movieID });
     dispatch(ADD_TO_FAV(movieID));
   } catch (error) {
     setState((prev) => ({ ...prev, error: handleErrors(error) }));
@@ -38,7 +38,7 @@ export const addToFavourite = async (movieID, setState, dispatch) => {
 export const removeFavouritesAll = async (listType, setState, dispatch) => {
   setState((prev) => ({ ...prev, isLoading: true, error: null }));
   try {
-    const result = await axios.post("/lists/remove_all", { listType });
+    const result = await axiosInstance.post("/lists/remove_all", { listType });
     setState((prev) => ({ ...prev, items: [], successMessage: result.data }));
     if (listType === "favourites") dispatch(CLEAR_FAV());
     else if (listType === "visitedBefore") dispatch(CLEAR_VISITEDBEFORE());
@@ -61,7 +61,7 @@ export const removeFavouritesItem = async (
     success: null,
   }));
   try {
-    const result = await axios.post("/lists/remove_item", {
+    const result = await axiosInstance.post("/lists/remove_item", {
       movieID,
       listType,
     });

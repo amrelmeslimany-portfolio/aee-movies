@@ -9,14 +9,14 @@ import {
   pendingCategoriedMovies,
   erorrCategoriedMovies,
 } from "./moviesActions";
-import axios from "axios";
+import { axiosInstance } from "../../config";
 import { handleTitle } from "../../helpers";
 
 // Get SLice of all movies with type
 export const getMoviesGenre = async (type, dispatch) => {
   dispatch(startMoviesGenreGet());
   try {
-    const { data } = await axios.get("/movies", {
+    const { data } = await axiosInstance.get("/movies", {
       params: { type },
     });
     dispatch(pendingMoviesGenreGet(data));
@@ -34,7 +34,7 @@ export const getFilterdMovies = async (value, countries, dispatch) => {
     if (titleQuery.trim().length === 0 && countriesQuery.trim().length === 0)
       throw Error("اكتب اسم الفيلم في البحث او اختر دولة");
     if (titleQuery?.includes("(")) throw Error("امسح القوس");
-    const { data } = await axios.get("/movies/search", {
+    const { data } = await axiosInstance.get("/movies/search", {
       params: { q: titleQuery, countries: countriesQuery },
     });
 
@@ -53,7 +53,7 @@ export const getFilterdMovies = async (value, countries, dispatch) => {
 export const getGenresMoves = async (setGenres, setLoading, setError) => {
   setLoading(true);
   try {
-    const { data } = await axios.get("/movies/genres");
+    const { data } = await axiosInstance.get("/movies/genres");
     const handeledData = data.filter(
       (item) => item.length !== 0 && !item.match(/^ *$/)
     );
@@ -98,7 +98,7 @@ export const getGenresMoves = async (setGenres, setLoading, setError) => {
 export const getOneMovie = async (setResult, initData) => {
   setResult((prev) => ({ ...prev, isFetching: true, error: null }));
   try {
-    const { data } = await axios.get("/movies/one-movie");
+    const { data } = await axiosInstance.get("/movies/one-movie");
     setResult((prev) => ({ ...prev, isFetching: false, data }));
   } catch (error) {
     let errorMessage =
@@ -113,7 +113,7 @@ export const getOneMovie = async (setResult, initData) => {
 export const getDetailsItem = async (id, setFetch) => {
   setFetch((prev) => ({ ...prev, isFetching: true }));
   try {
-    const { data } = await axios.get(`/movies/details/${id}`);
+    const { data } = await axiosInstance.get(`/movies/details/${id}`);
     setFetch((prev) => ({ ...prev, isFetching: false, data }));
   } catch (error) {
     let errorCode = error.response.status;
@@ -141,7 +141,7 @@ export const getCategoriedMovies = async (
   dispatch(startCategoriedMovies());
   setStatus((prev) => ({ ...prev, isFetching: true }));
   try {
-    const { data } = await axios.get(`/movies/category/${category}`, {
+    const { data } = await axiosInstance.get(`/movies/category/${category}`, {
       params: { type, page },
     });
     dispatch(pendingCategoriedMovies(data));

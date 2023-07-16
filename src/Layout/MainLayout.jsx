@@ -16,6 +16,7 @@ export default function MainLayout() {
   const [optionSlider, setOptionSlider] = useState(true);
   const onCollapseSider = () => setCollapsed((prev) => !prev);
   const onOptionSliderChange = () => setOptionSlider((prev) => !prev);
+  const onCLoseSlider = () => setOptionSlider(false);
 
   useEffect(() => {
     if (lg) setOptionSlider(true);
@@ -34,7 +35,10 @@ export default function MainLayout() {
         <Divider style={{ marginTop: 0, marginBottom: 0 }} />
         <Body />
       </Layout>
-      <OptionsSlider optionSlider={optionSlider} />
+      <OptionsSlider
+        optionSlider={optionSlider}
+        onCloseSlider={onCLoseSlider}
+      />
     </Layout>
   );
 }

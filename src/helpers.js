@@ -50,3 +50,12 @@ export const updateLikesPost = (posts, action) => {
     return post;
   });
 };
+
+export const isDevelopment = () => {
+  if (!process.env.NODE_ENV || process.env.NODE_ENV === "development")
+    return true;
+  else return false;
+};
+
+export const filterTags = (value = "") =>
+  value.replace(/<\/?[\w\s="/.':;#-\/\?]+>/g, "");

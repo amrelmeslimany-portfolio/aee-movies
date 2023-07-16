@@ -60,7 +60,7 @@ function ProfileHeader({ user, isMyProfile }) {
             icon={<EmailOutlined fontSize="medium" />}
             className="user-email"
           >
-            {email}
+            {!isMyProfile ? "*".repeat(email.length - 1) + email[0] : email}
           </Tag>
           <Tag className="user-biotext">{bio || "نبذه مختصرة عنك"}</Tag>
         </article>

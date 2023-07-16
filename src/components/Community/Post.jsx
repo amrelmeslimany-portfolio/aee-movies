@@ -48,7 +48,12 @@ const Post = ({ data, isMyPost }) => {
         {isMyPost && <RemovePost postID={data.postID} />}
       </section>
       <div className="post-body">
-        {data.postBody && <p className="post-text">{data.postBody}</p>}
+        {data.postBody && (
+          <p
+            className="post-text"
+            dangerouslySetInnerHTML={{ __html: data.postBody }}
+          />
+        )}
         {data.postCover &&
           (isImg(data.postCover) ? (
             <Image

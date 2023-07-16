@@ -6,12 +6,11 @@ import {
   useSearchParams,
 } from "react-router-dom";
 import PropsType from "prop-types";
-import { Badge, Button, Layout, Space, Grid } from "antd";
+import { Button, Layout, Space, Grid } from "antd";
 import {
   ArrowBackIos,
   Close,
   Menu as MenuIcon,
-  NotificationsOutlined,
   Search,
 } from "@material-ui/icons";
 import "./Header.less";
@@ -76,14 +75,6 @@ export default function Header({
           }
           type={"text"}
         />
-        <Badge dot offset={[10, 10]}>
-          <Button
-            icon={
-              <NotificationsOutlined className="color-header icon-header" />
-            }
-            type={"text"}
-          />
-        </Badge>
 
         <Button
           onClick={onOptionSliderChange}

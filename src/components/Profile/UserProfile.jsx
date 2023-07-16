@@ -7,10 +7,11 @@ import useFetchPosts from "../../hooks/useFetchPosts";
 import { FilterPosts } from "../Community/FilterPosts";
 import ProfileHeader from "./ProfileHeader";
 import PostsList from "../Community/PostsList";
-import axios from "axios";
+
 import { handleErrors } from "../../helpers";
 import { AuthContext } from "../../context/auth/auth-context";
 import { CLEAR_USER_POSTS } from "../../context/community/community-actions";
+import { axiosInstance } from "../../config";
 
 const userInitStatus = {
   isLoading: false,
@@ -26,7 +27,7 @@ const getUserAPI = async (userid, setState) => {
     user: null,
   }));
   try {
-    const { data } = await axios.get(`/user/${userid}`);
+    const { data } = await axiosInstance.get(`/user/${userid}`);
     setState((prev) => ({ ...prev, user: data }));
   } catch (error) {
     setState((prev) => ({

@@ -16,6 +16,7 @@ import FormItem, { FormSubmit } from "../UI/FormItem";
 import { addPost } from "../../context/community/community-cruds";
 import GuardMessage from "../UI/GuardMessage";
 import "./AddPost.less";
+import { filterTags } from "../../helpers";
 
 const initStatus = {
   error: null,
@@ -108,7 +109,7 @@ const AddPostForm = ({ onSubmit, isLoading }) => {
     return false;
   };
 
-  const submitHandler = ({ body }) => {
+  const submitHandler = ({ body = "" }) => {
     const dataForm = new FormData();
     if (postImageList.length === 0 && body?.trim().length === 0) {
       message.warning({
@@ -119,7 +120,11 @@ const AddPostForm = ({ onSubmit, isLoading }) => {
     }
 
     if (postImageList.length > 0) dataForm.append("postIMG", postImageList[0]);
-    if (body?.trim().length > 0) dataForm.append("postBody", body.trim());
+    if (body?.trim().length > 0)
+      dataForm.append(
+        "postBody",
+        filterTags(body).trim().replace(/\n/g, "<br>")
+      );
 
     onSubmit(dataForm);
   };

@@ -12,7 +12,12 @@ const maxAge = 60 * 60 * 24;
 /* 
   will double cookies period , then check if jwt expired or not then refresh depends on jwt ex
 */
-const cookieOptions = { httpOnly: true, maxAge: 1000 * maxAge };
+const cookieOptions = {
+  httpOnly: true,
+  maxAge: 1000 * maxAge,
+  sameSite: "none",
+  secure: true,
+};
 
 // @ Create new user
 router.post("/newuser", loggedinGuard, async (req, res) => {

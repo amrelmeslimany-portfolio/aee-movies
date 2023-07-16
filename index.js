@@ -22,20 +22,13 @@ app.use("/uploads", express.static(path.join(__dirname, "./uploads")));
 
 // Cors
 const allowlist = ["http://localhost:3000", "https://aee-movies.netlify.app"];
-const corsOptionsDelegate = (req, callback) => {
-  let corsOptions;
 
-  let isDomainAllowed = allowlist.indexOf(req.header("Origin")) !== -1;
-  if (isDomainAllowed) {
-    // Enable CORS for this request
-    corsOptions = { origin: true };
-  } else {
-    // Disable CORS for this request
-    corsOptions = { origin: false };
-  }
-  callback(null, corsOptions);
-};
-app.use(cors(corsOptionsDelegate));
+app.use(
+  cors({
+    origin: allowlist,
+    credentials: true,
+  })
+);
 
 // Routes
 app.use("/api/movies/", moviesRoutes);

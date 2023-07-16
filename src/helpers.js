@@ -57,5 +57,4 @@ export const isDevelopment = () => {
   else return false;
 };
 
-export const filterTags = (value = "") =>
-  value.replace(/<\/?[\w\s="/.':;#-\/\?]+>/g, "");
+export const filterTags = (value = "") => value.replace(/<[^<>]+>/g, "");
